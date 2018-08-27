@@ -10,7 +10,11 @@
         </tr>
         <tr>
             <td>標題</td>
-            <td><input type="text" name="title"></td>
+            <td><input type="text" name="title" value=""></td>
+        </tr>
+        <tr>
+            <td>工时</td>
+            <td><input type="text" name="time"></td>
         </tr>
         <tr>
             <td>內文</td>

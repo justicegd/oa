@@ -10,7 +10,6 @@ class addOa extends Controller
 {
     function addOaPage()
     {
-
         return view('addOaPage');
 
     }
@@ -18,11 +17,12 @@ class addOa extends Controller
     function addOa(Request $request){
         $title = $request->input('title');
         $content = $request->input('content');
+        $time = $request->input('time');
         $data =(object)[
                 'confirm'   => 'ray|irvin|',
                 'pid'       => '96421',
                 'name'      => $title ,
-                'work_hour' => '2.5',
+                'work_hour' => (float)$time,
                 'content'   => $content,
                 'emp_no'    => env('ACCOUNT'),
                 'password'  => env('PASSWORD'),
@@ -36,6 +36,7 @@ class addOa extends Controller
 
     function send($data)
     {
+
         $uri = env('API_DOMAIN',false);
         if($uri === false){
             dd('智障,env API_DOMAIN 没设');
