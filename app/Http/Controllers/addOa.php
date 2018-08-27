@@ -43,7 +43,7 @@ class addOa extends Controller
 
         /** @var Client $client */
         $client   = App::make(Client::class);
-        $response = $client->request('POST', 'https://oaoa.icu/index.php?m=&c=AjaxFlowAdd&a=add', [
+        $response = $client->request('POST', $uri, [
             'form_params' => [
                 'confirm'   => $data->confirm,
                 'pid'       => $data->pid,
