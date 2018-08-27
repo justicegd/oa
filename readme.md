@@ -8,5 +8,5 @@
 </p>
 
 ## About Laravel
-1.請設定env檔 帳號/密碼/oa網址
-2.撰寫路徑為http://localhost/add_oa
++ 請設定env檔 帳號/密碼/oa網址
++ 撰寫路徑為http://localhost/add_oa
