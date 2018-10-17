@@ -81,7 +81,7 @@ class addOa extends Controller
             'pid'       => '96421',
             'name'      => $title,
             'work_hour' => $time,
-            'content'   => $content,
+            'content'   => $this->getContent($content),
             'emp_no'    => env('ACCOUNT'),
             'password'  => env('PASSWORD'),
         ];
