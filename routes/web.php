@@ -18,5 +18,6 @@ Route::get('/', function () {
 Route::get('/test', 'addOa@test')->name("test");
 Route::get('/add_oa', 'addOa@addOaPage')->name("addOaPage");
 Route::post('/add_oa', 'addOa@doAddOa')->name("addOa");
+Route::get('/create_api_wiki',"createApiWiki@createWikiData")->name("createApiWiki");
 
 

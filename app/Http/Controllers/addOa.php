@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App;
@@ -39,7 +40,8 @@ class addOa extends Controller
             foreach ($oaDataArr as $oa){
                switch ($i){
                    case 0:
-                       $oa= (is_int($oa*1 ))?(string)$oa.'.0':$oa ;
+                       $oa = $oa*1;
+                       $oa= (is_int($oa*1 ))?(string)$oa.'.0':$oa;
                        $tmpData->time = $oa;
                        break;
                    case 1:
