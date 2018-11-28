@@ -21,7 +21,9 @@ class addOa extends Controller
                     <p>-------------------------------------------------------------------------------------------------</p>
                     <p>1. 需求者 </p>
                     <p>2. 詳細內容</p>
+                    <ul>
                     {$contentData}
+                    </ul>
                     <p>3. 解決方法</p>
                     <p>4. 測試注意事項</p>
                     <p>&nbsp;</p>";
@@ -49,10 +51,10 @@ class addOa extends Controller
                         break;
                     case 2:
                         $tmpData->title = $oa;
-                        $tmpData->content = "---- {$oa}</br>";
+                        $tmpData->content = "<li>{$oa}</li>";
                         break;
                     default:
-                        $tmpData->content .= "---- {$oa}</br>";
+                        $tmpData->content .= "<li>{$oa}</li>";
                 }
                 $i ++;
             }
