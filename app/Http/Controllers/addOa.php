@@ -19,7 +19,7 @@ class addOa extends Controller
         $data = "<p><strong>
                     開發任務</strong></p>
                     <p>-------------------------------------------------------------------------------------------------</p>
-                    <p>1. 需求者 ray</p>
+                    <p>1. 需求者 </p>
                     <p>2. 詳細內容</p>
                     {$contentData}
                     <p>3. 解決方法</p>
@@ -38,19 +38,22 @@ class addOa extends Controller
             $oaDataArr = explode('--', $oaData);
             $i = 0;
             foreach ($oaDataArr as $oa){
-               switch ($i){
-                   case 0:
-                       $oa = $oa*1;
-                       $oa= (is_int($oa*1 ))?(string)$oa.'.0':$oa;
-                       $tmpData->time = $oa;
-                       break;
-                   case 1:
-                       $tmpData->title = $oa;
-                       $tmpData->content = "---- {$oa}</br>";
-                       break;
-                   default:
-                       $tmpData->content .= "---- {$oa}</br>";
-               }
+                switch ($i){
+                    case 0:
+                        $tmpData->pid = $oa;
+                        break;
+                    case 1:
+                        $oa = $oa*1;
+                        $oa= (is_int($oa*1 ))?(string)$oa.'.0':$oa;
+                        $tmpData->time = $oa;
+                        break;
+                    case 2:
+                        $tmpData->title = $oa;
+                        $tmpData->content = "---- {$oa}</br>";
+                        break;
+                    default:
+                        $tmpData->content .= "---- {$oa}</br>";
+                }
                 $i ++;
             }
             $returnData[]=$tmpData;
@@ -59,12 +62,15 @@ class addOa extends Controller
         return $returnData;
 
     }
-
+    /** 开始写oa */
     function doAddOa(Request $request){
+        /** 取request資料 */
         $oaDatas = $request->input('oaData');
+        /** 組要發送oa的資料 */
         $oaDatas = $this->getOaData($oaDatas);
         $msg = "";
-        foreach($oaDatas as $oaData){;
+        /** 開始發送 */
+        foreach($oaDatas as $oaData){
             $addResult = $this->addOa($oaData);
             $msg .=$addResult;
         }
@@ -73,14 +79,16 @@ class addOa extends Controller
 
     }
 
+    /* 開始發送 */
     function addOa($oaData){
+        $pid     = $oaData->pid;
         $title   = $oaData->title;
         $time    = $oaData->time;
         $content = $oaData->content;
 
         $data = (object)[
-            'confirm'   => 'ray|irvin|',
-            'pid'       => '96421',
+            'confirm'   => 'ivan|kelly|',
+            'pid'       => $pid ,
             'name'      => $title,
             'work_hour' => $time,
             'content'   => $this->getContent($content),
